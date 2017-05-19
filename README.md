@@ -11,23 +11,23 @@ __With this version some shorthand are changed__
 
 ## How to use it:
 Insert the library as usual:
-```
+```javascript
 npm install --save smart-console
 ```
-```
+```javascript
 const {c} = require("smart-console");
 ```
 Write 'c' instead of 'console' and use one of the method shortcuts. For example:
-```
+```javascript
 console.log('test');
 ```
 Becomes:
-```
+```javascript
 c.l('test');
 ```
 ### Shorthands for console methods
 Shorthands use lower case
-```
+```javascript
 c.a() = console.assert()
 c.dir() = console.dir()
 c.e() = console.error()
@@ -46,7 +46,7 @@ For the log() messages you can use 3 different ways to insert a variable:
 
 ### Format styles for log() method
 Format styles use lower case
-```
+```javascript
 c.lb() = bold
 c.lf() = faint
 c.lu() = underline
@@ -58,7 +58,7 @@ c.lh() = hidden
 
 ### Colors for log() method
 Colors use upper case
-```
+```javascript
 c.lK() = black
 c.lR() = red
 c.lG() = green
@@ -71,7 +71,7 @@ c.lW() = white
 
 ### Bold + Colors for log() method
 Format styles use lower case and Colors use upper case
-```
+```javascript
 c.lbK() = bold + black
 c.lbR() = bold + red
 c.lbG() = bold + green
@@ -84,7 +84,7 @@ c.lbW() = bold + white
 
 ### Underline + Bold + Colors for log() method
 Format styles use lower case and Colors use upper case, bold style is added by default
-```
+```javascript
 c.luK() = underline + bold + black
 c.luR() = underline + bold + red
 c.luG() = underline + bold + green
@@ -100,7 +100,7 @@ c.luW() = underline + bold + white
 
 ### Blink + Bold + Colors for log() method
 Format styles use lower case and Colors use upper case, bold style is added by default
-```
+```javascript
 c.llK() = blink + bold + black
 c.llR() = blink + bold + red
 c.llG() = blink + bold + green
@@ -113,7 +113,7 @@ c.llW() = blink + bold + white
 
 ### Background Color + Bold for log() method
 Background Colors use upper case, bold style is added by default
-```
+```javascript
 c.lKBG() = blink + bold + black
 c.lRBG() = blink + bold + red
 c.lGBG() = blink + bold + green
@@ -132,8 +132,9 @@ __Different console colors produce different effects and contrasts__
 ![shortcuts results](img/9.png)
 
 __If you forget the shortcuts' name:__
+```javascript
 > c.l(c);
-
+```
 [Git Hub Repository](https://github.com/achille1789/smart-console-nodejs)
 
 [Report an Issue](https://github.com/achille1789/smart-console-nodejs/issues)
