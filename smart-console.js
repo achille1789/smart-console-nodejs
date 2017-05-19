@@ -1,3 +1,4 @@
+
 /*!
  * smart-console <https://github.com/achille1789/smart-console>
  *
@@ -8,6 +9,7 @@
 'use strict';
 
 function textToJSON (text) {
+    if (typeof text === 'undefined') return '';
     var newText = text;
     if (typeof text === 'object') newText = JSON.stringify(text); //Only stringify if the variable is JSON
     return newText;
