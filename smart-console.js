@@ -9,7 +9,7 @@
 
 function textToJSON (text) {
     var newText = text;
-    if (typeof text === 'object') newText = JSON.stringify(text, null, 4); //Only stringify if the variable is JSON
+    if (typeof text === 'object') newText = JSON.stringify(text); //Only stringify if the variable is JSON
     return newText;
 }
 
