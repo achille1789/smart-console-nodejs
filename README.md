@@ -41,14 +41,6 @@ c.w() = console.warn()
 c.j() = console.log() for logging JavaScript JSON objects
 ```
 
-Printing JSON works for all console methods
-```javascript
-c.l({hello: 'world'});
-```
-Or
-```javascript
-c.l('object is %s', {hello: 'world'});
-```
 
 For log() messages you can use 3 different ways to insert a variable:
 ```javascript
