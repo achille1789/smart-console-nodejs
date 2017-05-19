@@ -18,6 +18,7 @@ var c = {
     t: (param) => param ? console.time(param) : console.time(),             // console.time()
     te: (param) => param ? console.timeEnd(param) : console.timeEnd(),      // console.timeEnd()
     w: (text, ...extraParam) => console.warn(text, ...extraParam),          // console.warn()
+    j: (object, space) => console.log(JSON.stringify(object, null, space || 4)),    // console.log() - for logging JSON objects
 
     // log() style formatting
     lb: (text, ...extraParam) => console.log("\x1b[1m" + text + "\x1b[0m", ...extraParam),   // bold
