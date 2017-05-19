@@ -26,7 +26,7 @@ Becomes:
 c.l('test');
 ```
 ### Shorthands for console methods
-Shorthands use lower case
+All the shorthand methods use lower case
 ```javascript
 c.a() = console.assert()
 c.dir() = console.dir()
@@ -38,6 +38,7 @@ c.pe() = console.profileEnd()
 c.t() = console.time()
 c.te() = console.timeEnd()
 c.w() = console.warn()
+c.j() = console.log() for logging JavaScript JSON objects
 ```
 
 Printing JSON works for all console methods
@@ -49,9 +50,13 @@ Or
 c.l('object is %s', {hello: 'world'});
 ```
 
-For the log() messages you can use 3 different ways to insert a variable:
-
-![shortcuts results](img/1.png)
+For log() messages you can use 3 different ways to insert a variable:
+```javascript
+let str = "Awesome";
+c.l("Smart Console is " + str);
+c.l("Smart Console is %s", str);
+c.l(`Smart Console is ${str}`);
+```
 
 ### Format styles for log() method
 Format styles use lower case
