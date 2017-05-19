@@ -4,6 +4,8 @@ Simple JavaScript library that provides shorthand methods to manage console outp
 
 You can find the same library for the browser [here](https://github.com/achille1789/smart-console).
 
+This is our [npm page](https://www.npmjs.com/package/smart-console).
+
 Every console object method (for more info see: [MDN](https://developer.mozilla.org/en/docs/Web/API/console) and
 [Google API](https://developers.google.com/web/tools/chrome-devtools/console/console-reference)) has a name shortcut. Furthermore, predefined colors and style can be added to the log() messages.
 
@@ -120,14 +122,14 @@ c.llW() = blink + bold + white
 ### Background Color + Bold for log() method
 Background Colors use upper case, bold style is added by default
 ```javascript
-c.lKBG() = blink + bold + black
-c.lRBG() = blink + bold + red
-c.lGBG() = blink + bold + green
-c.lYBG() = blink + bold + yellow
-c.lBBG() = blink + bold + blue
-c.lMBG() = blink + bold + magenta
-c.lCBG() = blink + bold + cyan
-c.lWBG() = blink + bold + white
+c.lKBG() = background color + bold + black
+c.lRBG() = background color + bold + red
+c.lGBG() = background color + bold + green
+c.lYBG() = background color + bold + yellow
+c.lBBG() = background color + bold + blue
+c.lMBG() = background color + bold + magenta
+c.lCBG() = background color + bold + cyan
+c.lWBG() = background color + bold + white
 ```
 ![shortcuts results](img/6.png)
 
