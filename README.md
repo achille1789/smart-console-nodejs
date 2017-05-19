@@ -44,6 +44,10 @@ Printing JSON works for all console methods
 ```javascript
 c.l({hello: 'world'});
 ```
+Or
+```javascript
+c.l('object is %s', {hello: 'world'});
+```
 
 For the log() messages you can use 3 different ways to insert a variable:
 
