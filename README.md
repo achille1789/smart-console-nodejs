@@ -40,6 +40,11 @@ c.te() = console.timeEnd()
 c.w() = console.warn()
 ```
 
+Printing JSON works for all console methods
+```javascript
+c.l({hello: 'world'});
+```
+
 For the log() messages you can use 3 different ways to insert a variable:
 
 ![shortcuts results](img/1.png)
