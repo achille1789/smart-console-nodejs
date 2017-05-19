@@ -9,7 +9,7 @@
 
 function textToJSON (text) {
     var newText = text;
-    if (typeof text === 'object') newText = JSON.stringify(text); //Only stringify if the variable is JSON
+    if (typeof text === 'object') newText = JSON.stringify(text, null, 4); //Only stringify if the variable is JSON
     return newText;
 }
 
@@ -24,6 +24,7 @@ var c = {
     t: (param) => param ? console.time(textToJSON(param)) : console.time(),             // console.time()
     te: (param) => param ? console.timeEnd(textToJSON(param)) : console.timeEnd(),      // console.timeEnd()
     w: (text, ...extraParam) => console.warn(textToJSON(text), textToJSON(...extraParam)),          // console.warn()
+    j: (object, space) => console.log(JSON.stringify(object, null, space || 4)),    // console.log() - for logging JSON objects
 
     // log() style formatting
     lb: (text, ...extraParam) => console.log("\x1b[1m" + textToJSON(text) + "\x1b[0m", textToJSON(...extraParam)),   // bold
