@@ -31,17 +31,17 @@ c.l('test');
 ### Shorthands for console methods
 All the shorthand methods use lower case
 ```javascript
-c.a() = console.assert()
-c.dir() = console.dir()
-c.e() = console.error()
-c.i() = console.info()
-c.l() = console.log()
-c.p() = console.profile()
+c.a() = console.assert(params)
+c.dir() = console.dir(obj)
+c.e() = console.error(param, [optional params])
+c.i() = console.info(param, [optional params])
+c.l() = console.log(param, [optional params])
+c.p() = console.profile([optional param])
 c.pe() = console.profileEnd()
-c.t() = console.time()
-c.te() = console.timeEnd()
-c.w() = console.warn()
-c.j() = console.log() for logging JavaScript JSON objects
+c.t() = console.time([optional param])
+c.te() = console.timeEnd([optional param])
+c.w() = console.warn(param, [optional params])
+c.j() = console.log(obj, [optional params]) for logging JavaScript JSON objects
 ```
 
 
