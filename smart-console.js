@@ -7,6 +7,7 @@
 
 'use strict';
 
+// console object
 var c = {
     a: (...extraParam) => console.assert(...extraParam),                    // console.assert()
     dir: (param) => console.dir(param),                                     // console.dir() - non-standard method
@@ -72,6 +73,17 @@ var c = {
     lMBG: (text, ...extraParam) => console.log("\x1b[1m\x1b[45m" + text + "\x1b[0m", ...extraParam),  // magenta
     lCBG: (text, ...extraParam) => console.log("\x1b[1m\x1b[46m" + text + "\x1b[0m", ...extraParam),  // cyan
     lWBG: (text, ...extraParam) => console.log("\x1b[1m\x1b[47m" + text + "\x1b[0m", ...extraParam),  // white
-}
+};
 
-module.exports = {c: c}
+// process object
+const p = {
+    a: () => process.abort(),
+    cpu: (param) => param ? process.cpuUsage(param) : process.cpuUsage(),
+    cwd: () => process.cwd(),
+    h: (param) => param ? process.hrtime(param) : process.hrtime(),
+};
+
+module.exports = {
+    c: c,
+    p: p,
+}

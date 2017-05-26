@@ -1,6 +1,6 @@
 # smart-console
 
-Simple JavaScript library that provides shorthand methods to manage console output with 0 dependencies. Customize your console output with different colors and format styles.
+Simple JavaScript library that provides shorthand methods to manage console output with 0 dependencies. Customize your console output with different colors and format styles. Started to implement shorthands for Process Object.
 
 You can find the same library for the browser [here](https://github.com/achille1789/smart-console).
 
@@ -9,7 +9,8 @@ This is our [npm page](https://www.npmjs.com/package/smart-console).
 Every console object method (for more info see: [MDN](https://developer.mozilla.org/en/docs/Web/API/console) and
 [Google API](https://developers.google.com/web/tools/chrome-devtools/console/console-reference)) has a name shortcut. Furthermore, predefined colors and style can be added to the log() messages.
 
-__With this version some shorthand are changed__
+## Version 3.0
+__New Feature:__ In this version I started to implement shorthands for Node.js Global [Process Object](https://nodejs.org/api/process.html#process_process).
 
 ## How to use it:
 Insert the library as usual:
@@ -17,7 +18,7 @@ Insert the library as usual:
 npm install --save smart-console
 ```
 ```javascript
-const {c} = require("smart-console");
+const {c, p} = require("smart-console");
 ```
 Write 'c' instead of 'console' and use one of the method shortcuts. For example:
 ```javascript
@@ -81,6 +82,29 @@ c.j(jsonObj, 2);
   "pas2": "rex",
   "pas3": "rex"
 }
+```
+
+### Process object
+Implemented shorthand for the methods: abort(), cpuUsage(), cwd(), hrtime().
+```javascript
+p.a = process.abort()
+p.cpu = process.cpuUsage([optional param])
+p.cwd = process.cwd()
+p.h = process.hrtime([optional param])
+```
+
+```javascript
+Example:
+var time = p.h();
+for (let i = 0; i < 2000000000; i++) {
+    let loop = i;
+}
+var diff = p.h(time);
+c.l(`Benchmark took ${diff[0]} seconds`);
+c.l(`Benchmark took ${diff[0] * 1e9 + diff[1]} nanoseconds`);
+Result:
+Benchmark took 3 seconds
+Benchmark took 3568764113 nanoseconds
 ```
 
 ### Format styles for log() method
@@ -172,8 +196,10 @@ __Different console colors produce different effects and contrasts__
 
 __If you forget the shortcuts' name:__
 ```javascript
-> c.l(c);
+c.l(c);  // console methods
+c.l(p);  // process methods
 ```
+
 [Git Hub Repository](https://github.com/achille1789/smart-console-nodejs)
 
 [Report an Issue](https://github.com/achille1789/smart-console-nodejs/issues)
