@@ -85,12 +85,14 @@ c.j(jsonObj, 2);
 ```
 
 ### Process object
-Implemented shorthand for the methods: abort(), cpuUsage(), cwd(), hrtime().
+Implemented shorthand for the methods: abort(), cpuUsage(), cwd(), hrtime(), memoryUsage(), uptime().
 ```javascript
 p.a = process.abort()
 p.cpu = process.cpuUsage([optional param])
 p.cwd = process.cwd()
 p.h = process.hrtime([optional param])
+p.mu: process.memoryUsage()
+p.ut: process.uptime()
 ```
 
 ```javascript

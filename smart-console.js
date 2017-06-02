@@ -81,6 +81,8 @@ const p = {
     cpu: (param) => param ? process.cpuUsage(param) : process.cpuUsage(),
     cwd: () => process.cwd(),
     h: (param) => param ? process.hrtime(param) : process.hrtime(),
+    mu: () => process.memoryUsage(),
+    ut: () => process.uptime(),
 };
 
 module.exports = {
