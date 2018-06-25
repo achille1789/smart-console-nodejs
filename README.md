@@ -12,14 +12,14 @@ Every console object method (for more info: [Node.js "Console"](https://nodejs.o
 __New Features:__
 * Code completely rewritten with ES6 syntax
 * Add new "verbose" method. It is as a normal log but the output, at the beginning, has filename and number  line.
-  Every existing log format can be used in verbose mode, just change the "l" with a "v"
+  Any existing log method can be used in verbose mode, just use "v" instead of "l"
   (eg: c.l(text) becomes c.v(text) and c.lRBG(text) becomes c.vRBG(text))
 * Add new console methods: clear, count and countReset. Only for node version 8.3.0 or newer
 * Add TypeScript definition file
 * Add default colors to error, warning and info methods
-* Add a new way to insert variables in log and keep format style
+* Add a new way to insert variables in log
 * Add trace method
-* process object no longer supported
+* "process" object no longer supported
 
 ## How to use it:
 Insert the library as usual:
@@ -36,16 +36,17 @@ import { c } from 'smart-console';
 Write 'c' instead of 'console' and use one of the method shortcuts. For example:
 ```javascript
 console.log('test');
-// Becomes:
+
+// Becomes
 c.l('test');
 ```
 ### Shorthands for console methods
 All the shorthand methods use lower case
 ```javascript
 c.a(...extraParams) = console.assert()
-c.cl() = console.clear()                    // node >= v8.3.0
-c.c([label]) = console.count()              // node >= v8.3.0
-c.cr([label]) = console.countReset()        // node >= v8.3.0
+c.cl() = console.clear()                        // node >= v8.3.0
+c.c([label]) = console.count()                  // node >= v8.3.0
+c.cr([label]) = console.countReset()            // node >= v8.3.0
 c.dir(object, [optObj]) = console.dir()
 c.e(text, ...extraParams) = console.error()
 c.i(text, ...extraParams) = console.info()
@@ -54,8 +55,8 @@ c.t([label]) = console.time()
 c.te([label]) = console.timeEnd()
 c.tr(...extraParams) = console.trace()
 c.w(text, ...extraParams) = console.warning()
-c.j(object, [space]) = console.log()        // to log stringify objects
-c.v(text, ...extraParams) = console.log()   // NEW - to log filename and number line
+c.j(object, [space]) = console.log()            // to log stringify objects
+c.v(text, ...extraParams) = console.log()       // NEW - to log filename and number line
 ```
 
 For log() messages you can use 4 different ways to insert a variable:
