@@ -72,31 +72,34 @@ The method j() can be used to log JS and JSON objects using JSON.stringify
 ```javascript
 var jsonObj = {'pas': 'rex', 'pas1': 'rex', 'pas2': 'rex', 'pas3': 'rex'};
 c.j(jsonObj);
-{
-    'pas': 'rex',
-    'pas1': 'rex',
-    'pas2': 'rex',
-    'pas3': 'rex'
-}
+// output
+// {
+//     'pas': 'rex',
+//     'pas1': 'rex',
+//     'pas2': 'rex',
+//     'pas3': 'rex'
+// }
 var jsObj = {pas: 'rex', pas1: 'rex', pas2: 'rex', pas3: 'rex'};
 c.j(jsObj);
-{
-    'pas': 'rex',
-    'pas1': 'rex',
-    'pas2': 'rex',
-    'pas3': 'rex'
-}
+// output
+// {
+//     'pas': 'rex',
+//     'pas1': 'rex',
+//     'pas2': 'rex',
+//     'pas3': 'rex'
+// }
 ```
 A second parameter can be added to insert white spaces. By default they are set to 4
 ```javascript
 var jsonObj = {'pas': 'rex', 'pas1': 'rex', 'pas2': 'rex', 'pas3': 'rex'};
 c.j(jsonObj, 2);
-{
-  'pas': 'rex',
-  'pas1': 'rex',
-  'pas2': 'rex',
-  'pas3': 'rex'
-}
+// output
+// {
+//   'pas': 'rex',
+//   'pas1': 'rex',
+//   'pas2': 'rex',
+//   'pas3': 'rex'
+// }
 ```
 
 The new method v() "verbose" can be used to log message with filename and line number.
@@ -110,7 +113,7 @@ c.lMBG('Smart Console') becomes c.vMBG('Smart Console')
 // [File: path/file_name] [Line: 150:10] Text message
 ```
 
-### Format styles for log() method
+### Format styles for log() method, for verbose use "v" instead of "l"
 Format styles use lower case
 ```javascript
 c.lb() = bold
@@ -122,7 +125,7 @@ c.lh() = hidden
 ```
 ![shortcuts results](img/2.png)
 
-### Colors for log() method
+### Colors for log() method, for verbose use "v" instead of "l"
 Colors use upper case
 ```javascript
 c.lK() = black
@@ -135,7 +138,7 @@ c.lC() = cyan
 c.lW() = white
 ```
 
-### Bold + Colors for log() method
+### Bold + Colors for log() method, for verbose use "v" instead of "l"
 Format styles use lower case and Colors use upper case
 ```javascript
 c.lbK() = bold + black
@@ -148,7 +151,7 @@ c.lbC() = bold + cyan
 c.lbW() = bold + white
 ```
 
-### Underline + Bold + Colors for log() method
+### Underline + Bold + Colors for log() method, for verbose use "v" instead of "l"
 Format styles use lower case and Colors use upper case, bold style is added by default
 ```javascript
 c.luK() = underline + bold + black
@@ -164,7 +167,7 @@ c.luW() = underline + bold + white
 ![shortcuts results](img/4.png)
 ![shortcuts results](img/5.png)
 
-### Blink + Bold + Colors for log() method
+### Blink + Bold + Colors for log() method, for verbose use "v" instead of "l"
 Format styles use lower case and Colors use upper case, bold style is added by default
 ```javascript
 c.llK() = blink + bold + black
@@ -177,7 +180,7 @@ c.llC() = blink + bold + cyan
 c.llW() = blink + bold + white
 ```
 
-### Background Color + Bold for log() method
+### Background Color + Bold for log() method, for verbose use "v" instead of "l"
 Background Colors use upper case, bold style is added by default
 ```javascript
 c.lKBG() = background color + bold + black
