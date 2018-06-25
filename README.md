@@ -1,16 +1,25 @@
 # smart-console
 
-Simple JavaScript library that provides shorthand methods to manage console output with 0 dependencies. Customize your console output with different colors and format styles. Started to implement shorthands for Process Object.
+Simple JavaScript library that provides shorthand methods to manage console output with 0 dependencies. Customize your console output with different colors and format styles.
 
 You can find the same library for the browser [here](https://github.com/achille1789/smart-console).
 
 This is our [npm page](https://www.npmjs.com/package/smart-console).
 
-Every console object method (for more info see: [MDN](https://developer.mozilla.org/en/docs/Web/API/console) and
-[Google API](https://developers.google.com/web/tools/chrome-devtools/console/console-reference)) has a name shortcut. Furthermore, predefined colors and style can be added to the log() messages.
+Every console object method (for more info: [Node.js "Console"](https://nodejs.org/api/console.html)) has a name shortcut. Furthermore, predefined colors and style can be added to the log() messages.
 
-## Version 3.0
-__New Feature:__ In this version I started to implement shorthands for Node.js Global [Process Object](https://nodejs.org/api/process.html#process_process).
+## Version 4.0
+__New Features:__
+* Code completely rewritten with ES6 syntax
+* Add new "verbose" method. It is as a normal log but the output, at the beginning, has filename and number  line.
+  Every existing log format can be used in verbose mode, just change the "l" with a "v"
+  (eg: c.l(text) becomes c.v(text) and c.lRBG(text) becomes c.vRBG(text))
+* Add new console methods: clear, count and countReset. Only for node version 8.3.0 or newer
+* Add TypeScript definition file
+* Add default colors to error, warning and info methods
+* Add a new way to insert variables in log and keep format style
+* Add trace method
+* process object no longer supported
 
 ## How to use it:
 Insert the library as usual:
@@ -18,95 +27,86 @@ Insert the library as usual:
 npm install --save smart-console
 ```
 ```javascript
-const {c, p} = require("smart-console");
+// JavaScript file
+const { c } = require('smart-console');
+
+// TypeScript file
+import { c } from 'smart-console';
 ```
 Write 'c' instead of 'console' and use one of the method shortcuts. For example:
 ```javascript
 console.log('test');
-```
-Becomes:
-```javascript
+// Becomes:
 c.l('test');
 ```
 ### Shorthands for console methods
 All the shorthand methods use lower case
 ```javascript
-c.a() = console.assert(params)
-c.dir() = console.dir(obj)
-c.e() = console.error(param, [optional params])
-c.i() = console.info(param, [optional params])
-c.l() = console.log(param, [optional params])
-c.p() = console.profile([optional param])
-c.pe() = console.profileEnd()
-c.t() = console.time([optional param])
-c.te() = console.timeEnd([optional param])
-c.w() = console.warn(param, [optional params])
-c.j() = console.log(obj, [optional params]) for logging JavaScript JSON objects
+c.a(...extraParams) = console.assert()
+c.cl() = console.clear()                    // node >= v8.3.0
+c.c([label]) = console.count()              // node >= v8.3.0
+c.cr([label]) = console.countReset()        // node >= v8.3.0
+c.dir(object, [optObj]) = console.dir()
+c.e(text, ...extraParams) = console.error()
+c.i(text, ...extraParams) = console.info()
+c.l(text, ...extraParams) = console.log()
+c.t([label]) = console.time()
+c.te([label]) = console.timeEnd()
+c.tr(...extraParams) = console.trace()
+c.w(text, ...extraParams) = console.warning()
+c.j(object, [space]) = console.log()        // to log stringify objects
+c.v(text, ...extraParams) = console.log()   // NEW - to log filename and number line
 ```
 
-
-For log() messages you can use 3 different ways to insert a variable:
+For log() messages you can use 4 different ways to insert a variable:
 ```javascript
-let str = "Awesome";
-c.l("Smart Console is " + str);
-c.l("Smart Console is %s", str);
+let str = 'Awesome';
+c.l('Smart Console is ' + str);
+c.l('Smart Console is %s', str);
 c.l(`Smart Console is ${str}`);
+c.l('Smart Console is', str);       // NEW
 ```
 
-The new method j() can be used to log JS and JSON objects using JSON.stringify
+The method j() can be used to log JS and JSON objects using JSON.stringify
 ```javascript
-var jsonObj = {"pas": "rex", "pas1": "rex", "pas2": "rex", "pas3": "rex"};
+var jsonObj = {'pas': 'rex', 'pas1': 'rex', 'pas2': 'rex', 'pas3': 'rex'};
 c.j(jsonObj);
 {
-    "pas": "rex",
-    "pas1": "rex",
-    "pas2": "rex",
-    "pas3": "rex"
+    'pas': 'rex',
+    'pas1': 'rex',
+    'pas2': 'rex',
+    'pas3': 'rex'
 }
-var jsObj = {pas: "rex", pas1: "rex", pas2: "rex", pas3: "rex"};
+var jsObj = {pas: 'rex', pas1: 'rex', pas2: 'rex', pas3: 'rex'};
 c.j(jsObj);
 {
-    "pas": "rex",
-    "pas1": "rex",
-    "pas2": "rex",
-    "pas3": "rex"
+    'pas': 'rex',
+    'pas1': 'rex',
+    'pas2': 'rex',
+    'pas3': 'rex'
 }
 ```
 A second parameter can be added to insert white spaces. By default they are set to 4
 ```javascript
-var jsonObj = {"pas": "rex", "pas1": "rex", "pas2": "rex", "pas3": "rex"};
+var jsonObj = {'pas': 'rex', 'pas1': 'rex', 'pas2': 'rex', 'pas3': 'rex'};
 c.j(jsonObj, 2);
 {
-  "pas": "rex",
-  "pas1": "rex",
-  "pas2": "rex",
-  "pas3": "rex"
+  'pas': 'rex',
+  'pas1': 'rex',
+  'pas2': 'rex',
+  'pas3': 'rex'
 }
 ```
 
-### Process object
-Implemented shorthand for the methods: abort(), cpuUsage(), cwd(), hrtime(), memoryUsage(), uptime().
+The new method v() "verbose" can be used to log message with filename and line number.
+Any log method can be used, just use "v" instead of "l"
 ```javascript
-p.a = process.abort()
-p.cpu = process.cpuUsage([optional param])
-p.cwd = process.cwd()
-p.h = process.hrtime([optional param])
-p.mu: process.memoryUsage()
-p.ut: process.uptime()
-```
-
-```javascript
-Example:
-var time = p.h();
-for (let i = 0; i < 2000000000; i++) {
-    let loop = i;
-}
-var diff = p.h(time);
-c.l(`Benchmark took ${diff[0]} seconds`);
-c.l(`Benchmark took ${diff[0] * 1e9 + diff[1]} nanoseconds`);
-Result:
-Benchmark took 3 seconds
-Benchmark took 3568764113 nanoseconds
+c.l('Smart Console') becomes c.v('Smart Console')
+c.lb('Smart Console') becomes c.vb('Smart Console')
+c.lM('Smart Console') becomes c.vM('Smart Console')
+c.lMBG('Smart Console') becomes c.vMBG('Smart Console')
+// output
+// [File: path/file_name] [Line: 150:10] Text message
 ```
 
 ### Format styles for log() method
@@ -199,7 +199,6 @@ __Different console colors produce different effects and contrasts__
 __If you forget the shortcuts' name:__
 ```javascript
 c.l(c);  // console methods
-c.l(p);  // process methods
 ```
 
 [Git Hub Repository](https://github.com/achille1789/smart-console-nodejs)
